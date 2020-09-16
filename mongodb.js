@@ -13,7 +13,19 @@ MongoClient.connect(
     if (error) {
       return console.log("Unable to connect to the database");
     }
+    const db = client.db(databaseName);
 
-    console.log("Connected to DB");
+    db.collection("users").insertOne(
+      {
+        name: "Asam",
+        age: 33,
+      },
+      (error, result) => {
+        if (error) {
+          return console.log("Unable to insert user");
+        }
+        console.log(result.ops);
+      }
+    );
   }
 );
