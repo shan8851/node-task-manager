@@ -1,10 +1,12 @@
 //CRUD
-
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
+const { MongoClient, ObjectID } = require("mongodb");
 
 const connectionURL = "mongodb://localhost//127.0.0.1:27017";
 const databaseName = "task-manager";
+
+const id = new ObjectID();
+console.log(id);
+console.log(id.getTimestamp());
 
 MongoClient.connect(
   connectionURL,
@@ -17,8 +19,9 @@ MongoClient.connect(
 
     db.collection("users").insertOne(
       {
-        name: "Asam",
-        age: 33,
+        _id: id,
+        name: "Tony",
+        age: 45,
       },
       (error, result) => {
         if (error) {
@@ -27,5 +30,18 @@ MongoClient.connect(
         console.log(result.ops);
       }
     );
+    // db.collection("tasks").insertMany(
+    //   [
+    //     { task: "Write blog post", completed: true },
+    //     { task: "Email MTC", completed: false },
+    //     { task: "Hoover", completed: true },
+    //   ],
+    //   (error, result) => {
+    //     if (error) {
+    //       return console.log("Unable to add users");
+    //     }
+    //     console.log(result.ops);
+    //   }
+    // );
   }
 );
