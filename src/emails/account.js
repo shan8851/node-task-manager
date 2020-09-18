@@ -4,9 +4,25 @@ const sendGridAPIKey = process.env.sendGridAPI;
 
 sgMail.setApiKey(sendGridAPIKey);
 
-sgMail.send({
-  to: "asamshan456@gmail.com",
-  from: "asamshan456@gmail.com",
-  subject: "This is my first creation",
-  text: "I hope this one actually gets to you",
-});
+const sendWelcomeEmail = (email, name) => {
+  sgMail.send({
+    to: email,
+    from: "asamshan456@gmail.com",
+    subject: "Welcome to Task Manager",
+    text: `Hey ${name}, welcome to the app. Let me know how you find it.`,
+  });
+};
+
+const sendCancellationEmail = (email, name) => {
+  sgMail.send({
+    to: email,
+    from: "asamshan456@gmail.com",
+    subject: "Sorry to see you go",
+    text: `Hey ${name}, I am sorry to hear you have closed your account. Please let me know if there is anything we can do to improve your experience.`,
+  });
+};
+
+module.exports = {
+  sendWelcomeEmail,
+  sendCancellationEmail,
+};
