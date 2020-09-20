@@ -2,9 +2,9 @@
 
 ### Overview
 
-This is complete backend solution for a task manager app built with node and express, using MongoDB for the database. A dev and production environment are setup using environment variables making it easy to switch between the two. A sample `.env` file is available in the repo.
+This is complete backend solution for a task manager app built with node and express, using MongoDB for the database. A dev and production environment are setup using environment variables making it easy to switch between the two. A sample `.env` file is available in the repo. To setup testing for multiple environments I have used the npm module _env-cmd_ and created a config directory in the root of the folder. I have added two files `dev.env` and `test.env`. This just means we can have a fresh mogodb database for running tests.
 
-The production version of this application is deployed with Heroku.
+The production version of this application is deployed with Heroku and the production env key value pairs are added there.
 
 ### Features
 
